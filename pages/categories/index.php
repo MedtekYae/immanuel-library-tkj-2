@@ -1,11 +1,11 @@
 <?php
-$pageTitle = "Kategori Buku";
+$pageTitle = "Manajemen Kategori";
 $pageSubtitle = "Kelola daftar kategori buku perpustakaan";
 
 require_once '../../components/admin/sidebar.php';
-require_once '../../repositories/categoryRepository.php';
+require_once '../../repositories/category-repository.php';
 
-$categories = getAllCategories();
+$categories = getCategories();
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -23,7 +23,10 @@ $categories = getAllCategories();
             <h2>Daftar Kategori</h2>
             <ul>
                 <?php foreach ($categories as $cat): ?>
-                    <li><?php echo $cat['name']; ?> (Slug: <?php echo $cat['slug']; ?>)</li>
+                    <li>
+                        <?php echo $cat['name']; ?> 
+                        <a href="../../actions/categories/destroy.php?id=<?php echo $cat['id']; ?>" onclick="return confirm('Yakin ingin menghapus kategori ini?')">Hapus</a>
+                    </li>
                 <?php endforeach; ?>
             </ul>
         </div>

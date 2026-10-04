@@ -1,7 +1,6 @@
-PHP
 <?php
 
-function getAllBooks() {
+function getBooks() {
     return [
         [
             "id" => 1,
@@ -22,12 +21,20 @@ function getAllBooks() {
     ];
 }
 
-function getBookById($id) {
-    $books = getAllBooks();
+function getBook($id) {
+    $books = getBooks();
     foreach ($books as $book) {
         if ($book['id'] == $id) {
             return $book;
         }
     }
     return null;
+}
+
+function getAllBooks() {
+    return getBooks();
+}
+
+function getBookById($id) {
+    return getBook($id);
 }

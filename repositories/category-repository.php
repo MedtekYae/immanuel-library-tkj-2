@@ -1,15 +1,14 @@
 <?php
 
-function getAllCategories() {
+function getCategories() {
     return [
-        ["id" => 1, "name" => "Fiksi", "slug" => "fiksi"],
-        ["id" => 2, "name" => "Fiksi Historis", "slug" => "fiksi-historis"],
-        ["id" => 3, "name" => "Sains", "slug" => "sains"],
+        ['id' => 1, 'name' => 'Fiksi', 'description' => 'Buku-buku fiksi'],
+        ['id' => 2, 'name' => 'Fiksi Historis', 'description' => 'Buku sejarah fiksi'],
     ];
 }
 
-function getCategoryById($id) {
-    $categories = getAllCategories();
+function getCategory($id) {
+    $categories = getCategories();
     foreach ($categories as $category) {
         if ($category['id'] == $id) {
             return $category;
@@ -17,3 +16,6 @@ function getCategoryById($id) {
     }
     return null;
 }
+
+function getAllCategories() { return getCategories(); }
+function getCategoryById($id) { return getCategory($id); }

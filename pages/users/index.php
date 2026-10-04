@@ -1,11 +1,11 @@
 <?php
-$pageTitle = "Daftar Pengguna";
-$pageSubtitle = "Kelola data pengguna perpustakaan";
+$pageTitle = "Manajemen Pengguna";
+$pageSubtitle = "Kelola daftar pengguna perpustakaan";
 
 require_once '../../components/admin/sidebar.php';
-require_once '../../repositories/userRepository.php';
+require_once '../../repositories/user-repository.php';
 
-$users = getAllUsers();
+$users = getUsers();
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -23,7 +23,10 @@ $users = getAllUsers();
             <h2>Daftar Pengguna</h2>
             <ul>
                 <?php foreach ($users as $user): ?>
-                    <li><?php echo $user['name']; ?> (<?php echo $user['role']; ?>) - <?php echo $user['email']; ?></li>
+                    <li>
+                        <?php echo $user['name']; ?> - <?php echo $user['role']; ?>
+                        <a href="../../actions/users/destroy.php?id=<?php echo $user['id']; ?>" onclick="return confirm('Yakin ingin menghapus pengguna ini?')">Hapus</a>
+                    </li>
                 <?php endforeach; ?>
             </ul>
         </div>

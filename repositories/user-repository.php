@@ -1,14 +1,14 @@
 <?php
 
-function getAllUsers() {
+function getUsers() {
     return [
-        ["id" => 1, "name" => "Admin Utama", "email" => "admin@immanuel.com", "role" => "Admin"],
-        ["id" => 2, "name" => "Siswa Budi", "email" => "budi@immanuel.com", "role" => "Member"],
+        ['id' => 1, 'name' => 'Admin User', 'email' => 'admin@gmail.com', 'role' => 'admin'],
+        ['id' => 2, 'name' => 'Siswa Test', 'email' => 'siswa@gmail.com', 'role' => 'user'],
     ];
 }
 
-function getUserById($id) {
-    $users = getAllUsers();
+function getUser($id) {
+    $users = getUsers();
     foreach ($users as $user) {
         if ($user['id'] == $id) {
             return $user;
@@ -16,3 +16,15 @@ function getUserById($id) {
     }
     return null;
 }
+
+function getProfile() {
+    return [
+        'id' => 1,
+        'name' => 'Admin Utama',
+        'email' => 'admin@immanuel.sch.id',
+        'phone' => '08123456789'
+    ];
+}
+
+function getAllUsers() { return getUsers(); }
+function getUserById($id) { return getUser($id); }

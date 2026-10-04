@@ -1,11 +1,11 @@
 <?php
-$pageTitle = "Daftar Penulis";
-$pageSubtitle = "Kelola data penulis buku";
+$pageTitle = "Manajemen Penulis";
+$pageSubtitle = "Kelola daftar penulis buku perpustakaan";
 
 require_once '../../components/admin/sidebar.php';
-require_once '../../repositories/authorRepository.php';
+require_once '../../repositories/author-repository.php';
 
-$authors = getAllAuthors();
+$authors = getAuthors();
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -23,7 +23,10 @@ $authors = getAllAuthors();
             <h2>Daftar Penulis</h2>
             <ul>
                 <?php foreach ($authors as $author): ?>
-                    <li><?php echo $author['name']; ?> - <?php echo $author['email']; ?></li>
+                    <li>
+                        <?php echo $author['name']; ?> (<?php echo $author['email']; ?>)
+                        <a href="../../actions/authors/destroy.php?id=<?php echo $author['id']; ?>" onclick="return confirm('Yakin ingin menghapus penulis ini?')">Hapus</a>
+                    </li>
                 <?php endforeach; ?>
             </ul>
         </div>

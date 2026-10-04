@@ -3,7 +3,7 @@ $pageTitle = "Detail Buku";
 $pageSubtitle = "Informasi lengkap mengenai buku";
 
 require_once '../../components/admin/sidebar.php';
-require_once '../../repositories/bookRepository.php';
+require_once __DIR__ . '/../../repositories/book-repository.php';
 
 // Ambil ID dari URL (contoh: show.php?id=1), default ke 1 jika tidak ada
 $id = $_GET['id'] ?? 1;

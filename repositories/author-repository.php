@@ -1,14 +1,14 @@
 <?php
 
-function getAllAuthors() {
+function getAuthors() {
     return [
-        ["id" => 1, "name" => "Andrea Hirata", "email" => "andrea@example.com"],
-        ["id" => 2, "name" => "Pramoedya Ananta Toer", "email" => "pramoedya@example.com"],
+        ['id' => 1, 'name' => 'Andrea Hirata', 'email' => 'andrea@gmail.com'],
+        ['id' => 2, 'name' => 'Pramoedya Ananta Toer', 'email' => 'pram@gmail.com'],
     ];
 }
 
-function getAuthorById($id) {
-    $authors = getAllAuthors();
+function getAuthor($id) {
+    $authors = getAuthors();
     foreach ($authors as $author) {
         if ($author['id'] == $id) {
             return $author;
@@ -16,3 +16,6 @@ function getAuthorById($id) {
     }
     return null;
 }
+
+function getAllAuthors() { return getAuthors(); }
+function getAuthorById($id) { return getAuthor($id); }
