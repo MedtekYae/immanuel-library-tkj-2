@@ -5,3 +5,4 @@ Memisahkan header dan footer ke dalam file component (seperti header.php dan foo
 
 2. Bagian pada halaman admin yang mengalami masalah serupa:
 Pada halaman-halaman admin (Buku, Kategori, Penulis, Pengguna, dan Profil), bagian sidebar (navigasi samping) dan topbar (bilah header atas) mengalami masalah duplikasi yang sama. Sebelum dipisah, markup elemen <aside> (sidebar) dan <header> (topbar) ditulis ulang secara identik di 14 file halaman admin yang berbeda, sehingga menyulitkan pembaruan dan menyebabkan pemborosan kode.
+Refactoring completed and verified.
