@@ -1,3 +1,4 @@
+<?php // Final code polish ?>
 <?php
 $pageTitle = "Manajemen Buku";
 $pageSubtitle = "Kelola data buku, kategori, dan penulis";
