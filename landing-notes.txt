@@ -1,8 +1,2 @@
-Jawaban Pertanyaan Refleksi Landing Page:
-
-1. Keuntungan memisahkan header dan footer menjadi file component tersendiri:
-Memisahkan header dan footer ke dalam file component (seperti header.php dan footer.php) menerapkan prinsip DRY (Don't Repeat Yourself). Hal ini memudahkan pemeliharaan kode (maintenance) karena jika terdapat perubahan navigasi atau desain header/footer, kita cukup memperbarui satu file component saja tanpa perlu mengubah setiap halaman HTML secara manual satu per satu. Selain itu, kode utama halaman menjadi jauh lebih bersih, terstruktur, dan mudah dibaca.
-
-2. Bagian pada halaman admin yang mengalami masalah serupa:
-Pada halaman-halaman admin (Buku, Kategori, Penulis, Pengguna, dan Profil), bagian sidebar (navigasi samping) dan topbar (bilah header atas) mengalami masalah duplikasi yang sama. Sebelum dipisah, markup elemen <aside> (sidebar) dan <header> (topbar) ditulis ulang secara identik di 14 file halaman admin yang berbeda, sehingga menyulitkan pembaruan dan menyebabkan pemborosan kode.
-Refactoring completed and verified.
+1. Memisahkan header dan footer jadi komponen tersendiri bikin kodingan jauh lebih rapi dan efisien. Kalau misal ada perubahan di menu atau tampilan footer, kita cuma perlu edit di satu file aja tanpa harus ngedit manual satu-satu di setiap halaman. Selain itu, hal ini juga mencegah terjadinya kelewatan atau perbedaan tampilan antar halaman.
+2. Masalah yang sama terjadi di bagian sidebar dan topbar navigasi admin. Sebelum dipisah jadi komponen tersendiri, struktur HTML sidebar dan topbar ditulis ulang secara berulang di setiap file halaman admin. Akibatnya, kalau ada penambahan menu baru, kita harus ngubah isi kode di semua file halaman admin satu per satu.
