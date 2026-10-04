@@ -1,0 +1,1 @@
+Aplikasi manajemen perpustakaan digital sederhana berbasis PHP.
