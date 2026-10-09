@@ -1,36 +1,69 @@
 <?php
-$pageTitle = "Manajemen Penulis";
-$pageSubtitle = "Kelola daftar penulis buku perpustakaan";
+require_once '../../config/database.php';
+require_once '../../repositories/book_repository.php';
 
-require_once '../../components/admin/sidebar.php';
-require_once '../../repositories/author-repository.php';
+$pageTitle = "Daftar Buku";
+$pageSubtitle = "Kelola semua data buku perpustakaan";
 
-$authors = getAuthors();
+$books = getBooks();
 ?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $pageTitle; ?> - Perpustakaan Digital</title>
+    <title><?= $pageTitle ?> - Perpustakaan Digital</title>
+    <link rel="stylesheet" href="../../styles/books/index.css">
 </head>
 <body>
-<div class="app-shell">
-    <main class="app-main">
-        <?php require_once '../../components/admin/topbar.php'; ?>
+    <div class="app-shell">
+        <?php include '../../components/admin/sidebar.php'; ?>
 
-        <div class="app-content">
-            <h2>Daftar Penulis</h2>
-            <ul>
-                <?php foreach ($authors as $author): ?>
-                    <li>
-                        <?php echo $author['name']; ?> (<?php echo $author['email']; ?>)
-                        <a href="../../actions/authors/destroy.php?id=<?php echo $author['id']; ?>" onclick="return confirm('Yakin ingin menghapus penulis ini?')">Hapus</a>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
-    </main>
-</div>
+        <main class="app-main">
+            <?php include '../../components/admin/topbar.php'; ?>
+
+            <div class="content-body">
+                <div class="action-bar">
+                    <a href="create.php" class="btn btn-primary">+ Tambah Buku</a>
+                </div>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Judul Buku</th>
+                            <th>Kategori</th>
+                            <th>Penulis</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if (!empty($books)): ?>
+                            <?php foreach ($books as $index => $book): ?>
+                                <tr>
+                                    <td><?= $index + 1 ?></td>
+                                    <td><?= htmlspecialchars($book['title']) ?></td>
+                                    <td><?= htmlspecialchars($book['category_name'] ?? '-') ?></td>
+                                    <td><?= htmlspecialchars($book['author_name'] ?? '-') ?></td>
+                                    <td>
+                                        <a href="show.php?id=<?= $book['id'] ?>" class="btn btn-info">Detail</a>
+                                        <a href="edit.php?id=<?= $book['id'] ?>" class="btn btn-warning">Edit</a>
+                                    
+                                        <a href="../../actions/books/destroy.php?id=<?= $book['id'] ?>" 
+                                           onclick="return confirm('Apakah Anda yakin ingin menghapus buku ini?')" 
+                                           class="btn btn-danger">Hapus</a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="5" style="text-align: center;">Belum ada data buku.</td>
+                            </tr>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
 </body>
 </html>
