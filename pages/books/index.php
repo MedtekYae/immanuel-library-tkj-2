@@ -12,7 +12,7 @@ $books = getBooks();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $pageTitle ?> - Perpustakaan Digital</title>
+    <title><?= htmlspecialchars($pageTitle) ?> - Perpustakaan Digital</title>
     <link rel="stylesheet" href="../../styles/books/index.css">
 </head>
 <body>
@@ -53,7 +53,6 @@ $books = getBooks();
                                         <td>
                                             <a href="show.php?id=<?= $book['id'] ?>" class="btn btn-info">Detail</a>
                                             <a href="edit.php?id=<?= $book['id'] ?>" class="btn btn-warning">Edit</a>
-                                            <!-- Tombol hapus + confirm() -->
                                             <a href="../../actions/books/destroy.php?id=<?= $book['id'] ?>" 
                                                onclick="return confirm('Apakah Anda yakin ingin menghapus buku ini?')" 
                                                class="btn btn-danger">Hapus</a>
